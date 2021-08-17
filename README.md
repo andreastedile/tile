@@ -4,6 +4,8 @@ This is a simple GNOME extension I wrote for fun, as an exercise.
 - `CTRL+ALT+2` snaps the current focused window to the second third of the screen.
 - `CTRL+ALT+3` snaps the current focused window to the third third of the screen.
 
+![tile](https://github.com/andreastedile/tile/blob/master/tile.gif)
+
 I later discovered an already existing extension which serves the same purpose, but is much more
 advanced: https://github.com/sunwxg/gnome-shell-extension-arrangeWindows
 
