@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.gnome.shell.extensions.tile"
+            path="/org/gnome/shell/extensions/tile/">
+        <key type="as" name="tile-1">
+            <default><![CDATA[['<Ctrl><Alt>1']]]></default>
+            <summary>The shortcut key</summary>
+            <description>Tile the focused window in the first third of the screen</description>
+        </key>
+        <key type="as" name="tile-2">
+            <default><![CDATA[['<Ctrl><Alt>2']]]></default>
+            <summary>The shortcut key</summary>
+            <description>Tile the focused window in the second third of the screen</description>
+        </key>
+        <key type="as" name="tile-3">
+            <default><![CDATA[['<Ctrl><Alt>3']]]></default>
+            <summary>The shortcut key</summary>
+            <description>Tile the focused window in the third third of the screen</description>
+        </key>
+    </schema>
+</schemalist>
