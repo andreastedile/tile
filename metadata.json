@@ -1,0 +1,8 @@
+{
+  "name": "tile",
+  "description": "Simple tiling tool",
+  "uuid": "tile@steddy",
+  "shell-version": [
+    "40"
+  ]
+}
