@@ -37,6 +37,21 @@ function getSettings() {
     return new Gio.Settings({settings_schema: schemaObj});
 }
 
+function snapCurrentWindowToColumn(columnIndex) {
+    const window = global
+        .workspace_manager.get_active_workspace().list_windows()
+        .filter(window => window.has_focus() && window.allows_resize() && !window.is_attached_dialog())[0];
+
+    if (window) {
+        log(`Snapping window to column ${columnIndex}`);
+        const [width, height] = global.get_display().get_size();
+        window.move_resize_frame(false,
+            columnIndex * (width / 3), 0,
+            width / 3, height
+        );
+    }
+}
+
 
 class Extension {
     constructor() {
@@ -47,17 +62,24 @@ class Extension {
         const flag = Meta.KeyBindingFlags.NONE;
         const settings = getSettings();
 
-        ['tile-1', 'tile-2', 'tile-3'].forEach(shortcut => {
-            Main.wm.addKeybinding(shortcut, settings, flag, mode, () => {
-                log(`Shortcut ${shortcut} activated`);
-            });
+        Main.wm.addKeybinding('tile-1', settings, flag, mode, () => {
+            log(`Shortcut title-1 activated`);
+            snapCurrentWindowToColumn(0);
+        });
+        Main.wm.addKeybinding('tile-2', settings, flag, mode, () => {
+            log(`Shortcut title-2 activated`);
+            snapCurrentWindowToColumn(1);
+        });
+        Main.wm.addKeybinding('tile-3', settings, flag, mode, () => {
+            log(`Shortcut title-3 activated`);
+            snapCurrentWindowToColumn(2);
         });
     }
 
     disable() {
-        ['tile-1', 'tile-2', 'tile-3'].forEach(shortcut => {
-            Main.wm.removeKeybinding(shortcut);
-        })
+        Main.wm.removeKeybinding('tile-1');
+        Main.wm.removeKeybinding('tile-2');
+        Main.wm.removeKeybinding('tile-3');
     }
 }
 
